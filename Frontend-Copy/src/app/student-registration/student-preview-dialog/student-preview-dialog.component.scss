@@ -1,0 +1,251 @@
+// Variables
+$primary-color: #6c5ce7;
+$secondary-color: #3498db;
+$light-gray: #f5f7fa;
+$medium-gray: #e4e7eb;
+$dark-gray: #718096;
+$font-primary: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$border-radius: 4px;
+$box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+// Global styles for the dialog
+.mat-dialog-container {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.dialog-title {
+  background-color: $primary-color;
+  color: white;
+  padding: 16px 24px;
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.5rem;
+  border-bottom: 2px solid $secondary-color;
+}
+
+.preview-dialog {
+  padding: 24px;
+  background-color: white;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-family: $font-primary;
+}
+
+// Header section with photo and signature
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  background-color: $light-gray;
+  padding: 16px;
+  padding-left: 100px;
+  padding-right: 100px;
+  border-radius: $border-radius;
+  
+  .student-id {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .id-label {
+      font-weight: 500;
+      color: $dark-gray;
+      font-size: 2rem;
+    }
+    
+    .id-value {
+      font-size: 4rem;
+      font-weight: 600;
+      color: $primary-color;
+      margin-top: 25px;
+    }
+  }
+
+  #images{
+    display: block;
+  }
+  
+  .student-photo, .student-signature {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border: 1px solid $medium-gray;
+      padding: 4px;
+      background-color: white;
+    }
+    
+    .no-photo, .no-signature {
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px dashed $dark-gray;
+      color: $dark-gray;
+      background-color: white;
+      font-size: 0.9rem;
+    }
+  }
+  
+  .student-signature {
+    img, .no-signature {
+      height: 70px;
+    }
+  }
+}
+
+// Section styling
+.preview-section {
+  margin-bottom: 24px;
+  background-color: white;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+
+  .section-title {
+    background-color: $light-gray;
+    color: $primary-color;
+    margin: 0;
+    padding: 12px 16px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-bottom: 1px solid $medium-gray;
+  }
+
+  .preview-content {
+    padding: 16px;
+  }
+}
+
+// Layout for address columns
+.preview-columns {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  
+  .preview-section {
+    flex: 1;
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+// Row styling
+.preview-row {
+  display: flex;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $light-gray;
+  
+  &:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  
+  .preview-label {
+    flex: 0 0 140px;
+    font-weight: 500;
+    color: $dark-gray;
+    padding-right: 16px;
+  }
+  
+  .preview-value {
+    flex: 1;
+    color: $primary-color;
+  }
+}
+
+// Academic grid styling
+.academics-grid {
+  .academic-header, .academic-row {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    gap: 16px;
+    padding: 12px 8px;
+  }
+  
+  .academic-header {
+    font-weight: 500;
+    color: $dark-gray;
+    border-bottom: 2px solid $medium-gray;
+  }
+  
+  .academic-row {
+    border-bottom: 1px solid $light-gray;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .academic-title {
+      font-weight: 500;
+    }
+  }
+}
+
+// Action buttons
+.dialog-actions {
+  padding: 16px 24px;
+  background-color: $light-gray;
+  border-top: 1px solid $medium-gray;
+  
+  button {
+    min-width: 100px;
+    font-weight: 500;
+    
+    &.print-button {
+      background-color: $primary-color;
+      color: white;
+      margin-right: 16px;
+      
+      mat-icon {
+        margin-right: 4px;
+      }
+      
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+    
+    &.close-button {
+      border: 1px solid $dark-gray;
+      
+      &:hover {
+        background-color: $medium-gray;
+      }
+    }
+  }
+}
+
+// Print media query for better printing
+@media print {
+  .dialog-actions {
+    display: none !important;
+  }
+  
+  .preview-dialog {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  .preview-section {
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+  
+  .preview-header, .preview-section {
+    border: 1px solid $medium-gray;
+  }
+}

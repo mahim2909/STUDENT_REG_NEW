@@ -1,0 +1,127 @@
+<section class="print-content">
+<h2 mat-dialog-title class="dialog-title">Student Details</h2>
+
+<mat-dialog-content class="preview-dialog">
+  <div class="preview-header">
+    <div class="student-id">
+        <span class="id-label">STUDENT ID:</span>
+        <span class="id-value">{{ data.student_id }}</span>
+      </div>
+      <div id="images">
+    <div class="student-photo">
+      <img [src]="getImageUrl(data.photo)" alt="Student Photo" *ngIf="data.photo">
+      <div class="no-photo" *ngIf="!data.photo">No Photo</div>
+    </div>
+    
+    <div class="student-signature">
+      <img [src]="getImageUrl(data.signature)" alt="Student Signature" *ngIf="data.signature">
+      <div class="no-signature" *ngIf="!data.signature">No Signature</div>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="preview-section">
+    <h3 class="section-title">Basic Information</h3>
+    <div class="preview-content">
+      <div class="preview-row">
+        <span class="preview-label">Name:</span>
+        <span class="preview-value">{{ data.first_name }} {{ data.middle_name }} {{ data.last_name }}</span>
+      </div>
+      <div class="preview-row">
+        <span class="preview-label">Gender:</span>
+        <span class="preview-value">{{ data.gender }}</span>
+      </div>
+      <div class="preview-row">
+        <span class="preview-label">Date of Birth:</span>
+        <span class="preview-value">{{ data.date_of_birth | date:'mediumDate' }}</span>
+      </div>
+      <div class="preview-row">
+        <span class="preview-label">Email:</span>
+        <span class="preview-value">{{ data.email }}</span>
+      </div>
+      <div class="preview-row">
+        <span class="preview-label">Phone:</span>
+        <span class="preview-value">{{ data.phone_number }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-columns">
+    <div class="preview-section">
+      <h3 class="section-title">Current Address</h3>
+      <div class="preview-content">
+        <div class="preview-row">
+          <span class="preview-label">Address Line:</span>
+          <span class="preview-value">{{ data.current_addressLine }}</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">Block/Area:</span>
+          <span class="preview-value">{{ data.current_block }}</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">District:</span>
+          <span class="preview-value">{{ data.current_dist }}</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">State:</span>
+          <span class="preview-value">{{ data.current_state }}</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">Pincode:</span>
+          <span class="preview-value">{{ data.current_pincode }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-section">
+      <h3 class="section-title">Permanent Address</h3>
+      <div class="preview-content">
+        <div class="preview-row">
+          <span class="preview-label">Address Line:</span>
+          <span class="preview-value">{{ data.permanent_addressLine }}</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">Block/Area:</span>
+          <span class="preview-value">{{ data.permanent_block }}</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">District:</span>
+          <span class="preview-value">{{ data.permanent_dist }}</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">State:</span>
+          <span class="preview-value">{{ data.permanent_state }}</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">Pincode:</span>
+          <span class="preview-value">{{ data.permanent_pincode }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section" *ngIf="data.academics && data.academics.length > 0">
+    <h3 class="section-title">Academic Information</h3>
+    <div class="preview-content academics-grid">
+      <div class="academic-header">
+        <div class="academic-title">Class/Degree</div>
+        <div>Percentage</div>
+        <div>Board/University</div>
+      </div>
+      <div class="academic-row" *ngFor="let academic of data.academics">
+        <div class="academic-title">{{ academic.class }}</div>
+        <div>{{ academic.percent }}%</div>
+        <div>{{ academic.board }}</div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+</section>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button mat-dialog-close class="print-button" (click)="printPreview()">
+    <mat-icon>print</mat-icon> Print
+  </button>
+  <button mat-button mat-dialog-close class="close-button">Close</button>
+</mat-dialog-actions>
