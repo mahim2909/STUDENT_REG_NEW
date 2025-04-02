@@ -1,0 +1,523 @@
+// --- New Theme Variables ---
+$primary-color: #d7780b; // Indigo
+$accent-color: #26a69a; // Teal
+$warn-color: #ef5350; // Red
+$background-color: #f9f9f9;
+$card-background: #ffffff;
+$text-color: #424242;
+$header-color: #db8114;
+$label-color: #616161;
+$border-color: #e0e0e0;
+$success-color: #66bb6a;
+$section-gap: 2.5rem;
+
+// --- Card Styling ---
+.registration-card {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0;
+  background-color: $card-background;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  color: $text-color;
+  border-top: 4px solid $primary-color;
+
+  mat-card-header {
+    background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
+    color: white;
+    padding: 1.5rem 2rem;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+    mat-card-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    mat-card-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+    }
+  }
+
+  mat-card-content {
+    padding: 2rem;
+    position: relative;
+  }
+}
+
+// --- Full Form Layout ---
+.full-form {
+  display: flex;
+  flex-direction: column;
+  gap: $section-gap;
+}
+
+// --- Form Section Styling ---
+.form-section {
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 1.5rem;
+  position: relative;
+  background-color: rgba($primary-color, 0.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// --- Section Header & Spacing ---
+.section-header {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: $header-color;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid $primary-color;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 50px;
+    height: 4px;
+    background-color: $accent-color;
+  }
+}
+
+.subsection-title {
+  font-size: 1.1rem;
+  color: $primary-color;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+// --- Form Row & Field Styling ---
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+
+  mat-form-field {
+    flex: 1 1 250px;
+    min-width: 200px;
+
+    // Custom styling for form fields
+    ::ng-deep .mat-mdc-form-field-flex {
+      border-radius: 8px !important;
+    }
+
+    ::ng-deep .mat-mdc-notched-outline>* {
+      border-color: #ddd !important;
+    }
+
+    &.mat-focused {
+      ::ng-deep .mat-mdc-notched-outline>* {
+        border-color: $primary-color !important;
+        border-width: 2px !important;
+      }
+
+      .mat-mdc-form-field-label {
+        color: $primary-color !important;
+      }
+    }
+  }
+
+  .form-field-container {
+    flex: 1 1 250px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+
+    .form-field-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: $label-color;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  mat-radio-group {
+    display: flex;
+    gap: 1.5rem;
+  }
+}
+
+// --- Material Component Theming ---
+:host {
+
+  // Primary color components
+  mat-radio-button.mat-accent .mat-mdc-radio-native-control:enabled:checked+.mat-mdc-radio-outer-circle {
+    border-color: $primary-color;
+  }
+
+  mat-radio-button.mat-accent .mat-mdc-radio-native-control:enabled+.mat-mdc-radio-inner-circle {
+    background-color: $primary-color;
+  }
+
+  mat-checkbox.mat-primary .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+  mat-checkbox.mat-primary .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background {
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+
+  button[mat-raised-button][color="primary"] {
+    background-color: $primary-color;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($primary-color, 8%);
+    }
+
+    &:disabled {
+      background-color: rgba($primary-color, 0.4);
+    }
+  }
+
+  button[mat-stroked-button][color="primary"] {
+    color: $primary-color;
+    border-color: $primary-color;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.05);
+    }
+  }
+
+  button[mat-stroked-button][color="accent"] {
+    color: $accent-color;
+    border-color: $accent-color;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: rgba($accent-color, 0.05);
+    }
+  }
+
+  button[mat-button] {
+    color: $primary-color;
+    font-weight: 500;
+  }
+
+  button[mat-icon-button][color="warn"] {
+    color: $warn-color;
+
+    &:hover {
+      background-color: rgba($warn-color, 0.1);
+    }
+  }
+}
+
+// --- File Upload Styling ---
+.file-upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.file-input-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background-color: rgba($primary-color, 0.02);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $accent-color;
+    box-shadow: 0 2px 8px rgba($accent-color, 0.1);
+  }
+
+  label {
+    font-weight: 500;
+    min-width: 150px;
+    color: $label-color;
+  }
+
+  .file-name {
+    font-style: italic;
+    color: grey;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  mat-error {
+    width: 100%;
+    margin-top: 0.25rem;
+    padding-left: 166px;
+    font-size: 0.8rem;
+  }
+
+  .file-preview {
+    max-width: 80px;
+    max-height: 80px;
+    border: 1px solid #ddd;
+    padding: 2px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.academic-file-input {
+  margin-top: 0.5rem;
+  border-style: solid;
+  padding: 1rem;
+  border-width: 1px;
+  border-color: $border-color;
+  background-color: rgba($primary-color, 0.01);
+}
+
+// --- Academic Entry Styling ---
+.academic-entry {
+  border: 1px solid $border-color;
+  background-color: rgba($primary-color, 0.03);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  position: relative;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  h4 {
+    margin-top: 0;
+    color: $primary-color;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px dashed $border-color;
+    margin-top: 1.5rem;
+  }
+
+  button[mat-icon-button] {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}
+
+.add-academic-btn {
+  margin: 1rem 0 1rem 0;
+  display: block;
+}
+
+// --- Form Actions ---
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: rgba($primary-color, 0.05);
+  border: 1px solid $border-color;
+}
+
+// --- Spinner Overlay ---
+.spinner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 12px;
+}
+
+// --- Error & Success Messages ---
+.error-text {
+  color: $warn-color;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin-top: 2rem;
+  background-color: rgba($success-color, 0.1);
+  border-radius: 10px;
+  border-left: 4px solid $success-color;
+
+  mat-icon {
+    color: $success-color;
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: $success-color;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+}
+
+// --- Snackbar Styling ---
+:host ::ng-deep .snackbar-success {
+  background-color: $success-color;
+  color: white;
+}
+
+:host ::ng-deep .snackbar-error {
+  background-color: $warn-color;
+  color: white;
+}
+
+:host ::ng-deep .snackbar-info {
+  background-color: $primary-color;
+  color: white;
+}
+
+:host ::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__label {
+  color: inherit;
+}
+
+// Table Styling
+.student-records-section {
+  margin-top: $section-gap;
+}
+
+.table-container {
+  position: relative;
+  overflow-x: auto;
+
+  .spinner-overlay {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.student-table {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  th {
+    background-color: rgba($primary-color, 0.1);
+    color: $primary-color;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  tr.mat-mdc-row:hover {
+    background-color: rgba($primary-color, 0.03);
+  }
+
+  .mat-column-actions {
+    width: 140px;
+    text-align: center;
+
+    button {
+      margin: 0 2px;
+    }
+  }
+}
+
+.no-records {
+  padding: 2rem;
+  text-align: center;
+  color: $label-color;
+  font-style: italic;
+}
+
+// Preview Dialog Styling
+.preview-dialog {
+  max-width: 800px;
+
+  h2 {
+    color: $primary-color;
+    border-bottom: 2px solid $primary-color;
+    padding-bottom: 0.5rem;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+
+    h3 {
+      color: $header-color;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid $border-color;
+    }
+  }
+
+  .preview-row {
+    display: flex;
+    margin-bottom: 0.5rem;
+  }
+
+  .preview-label {
+    font-weight: 500;
+    min-width: 120px;
+    color: $label-color;
+  }
+
+  .preview-value {
+    flex: 1;
+  }
+
+  .preview-academic {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed $border-color;
+
+    h4 {
+      color: $primary-color;
+      margin-bottom: 0.5rem;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// Confirmation Dialog
+.confirmation-dialog {
+  .mat-mdc-dialog-title {
+    color: $warn-color;
+  }
+
+  .dialog-content {
+    margin-bottom: 1rem;
+  }
+
+  .confirm-button {
+    background-color: $warn-color;
+    color: white;
+  }
+}
