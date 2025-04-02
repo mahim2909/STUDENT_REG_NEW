@@ -1,0 +1,12 @@
+{
+  "name": "MyApp - Development",
+  "app": {
+    "port": 3001
+  },
+  "db":{
+    "host":"127.0.0.1",
+    "user":"root",
+    "database":"student_db",
+    "password":""
+  }
+}
